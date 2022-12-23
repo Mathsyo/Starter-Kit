@@ -8,13 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Cmdinglasan\FilamentBoringAvatars\Traits\HasAvatarUrl;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasApiTokens;
-    use HasFactory;
-    use Notifiable;
-    use HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasAvatarUrl;
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +23,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'profile_picture'
     ];
 
     /**
@@ -51,4 +50,13 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->hasRole('administrator');
     }
+
+    // public function getProfilePictureUrlAttribute()
+    // {
+    //     # Check if file exists in storage
+    //     if (!Storage::disk('public')->exists('users/profile_pictures/' . $this->profile_picture)) {
+    //         return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->name))) . "?s=200&d=retro";
+    //     }
+    //     return asset(Storage::url('users/profile_pictures/' . $this->profile_picture));
+    // }
 }

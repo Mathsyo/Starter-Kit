@@ -18,4 +18,7 @@ class PageController extends Controller
         return view('pages.wizard');
     }
 
+    public function maintenance() {
+        return view('pages.maintenance');
+    }
 }

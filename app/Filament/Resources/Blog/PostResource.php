@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Blog;
 use App\Filament\Resources\Blog\PostResource\Pages;
 use App\Filament\Resources\Blog\PostResource\RelationManagers;
 use App\Models\Blog\Post;
+use Camya\Filament\Forms\Components\TitleWithSlugInput;
 use Filament\Forms;
 use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Notifications\Notification;
@@ -39,15 +40,20 @@ class PostResource extends Resource
                     ->schema([
                         Forms\Components\Card::make()
                             ->schema([
-                                Forms\Components\TextInput::make('title')
-                                    ->required()
-                                    ->lazy()
-                                    ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
+                                // Forms\Components\TextInput::make('title')
+                                //     ->required()
+                                //     ->lazy()
+                                //     ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
 
-                                Forms\Components\TextInput::make('slug')
-                                    ->disabled()
-                                    ->required()
-                                    ->unique(Post::class, 'slug', ignoreRecord: true),
+                                // Forms\Components\TextInput::make('slug')
+                                //     ->disabled()
+                                //     ->required()
+                                //     ->unique(Post::class, 'slug', ignoreRecord: true),
+
+                                TitleWithSlugInput::make(
+                                    fieldTitle: 'title',
+                                    fieldSlug: 'slug',
+                                )->columnSpan('full'),
 
                                 Forms\Components\MarkdownEditor::make('content')
                                     ->required()

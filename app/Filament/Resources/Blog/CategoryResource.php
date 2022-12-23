@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Blog;
 
 use App\Filament\Resources\Blog\CategoryResource\Pages;
 use App\Models\Blog\Category;
+use Camya\Filament\Forms\Components\TitleWithSlugInput;
 use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Form;
@@ -30,15 +31,20 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->lazy()
-                    ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
+                // Forms\Components\TextInput::make('name')
+                //     ->required()
+                //     ->lazy()
+                //     ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
 
-                Forms\Components\TextInput::make('slug')
-                    ->disabled()
-                    ->required()
-                    ->unique(Category::class, 'slug', ignoreRecord: true),
+                // Forms\Components\TextInput::make('slug')
+                //     ->disabled()
+                //     ->required()
+                //     ->unique(Category::class, 'slug', ignoreRecord: true),
+
+                TitleWithSlugInput::make(
+                    fieldTitle: 'name',
+                    fieldSlug: 'slug',
+                )->columnSpan('full'),
 
                 Forms\Components\MarkdownEditor::make('description')
                     ->columnSpan('full'),

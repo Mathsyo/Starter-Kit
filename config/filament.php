@@ -194,7 +194,8 @@ return [
     |
     */
 
-    'default_avatar_provider' => \Filament\AvatarProviders\UiAvatarsProvider::class,
+    // 'default_avatar_provider' => \Filament\AvatarProviders\UiAvatarsProvider::class,
+    'default_avatar_provider' => Cmdinglasan\FilamentBoringAvatars\AvatarProviders\UiAvatarsProvider::class,
 
     /*
     |--------------------------------------------------------------------------

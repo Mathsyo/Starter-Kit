@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Shop;
 use App\Filament\Resources\Shop\BrandResource\Pages;
 use App\Filament\Resources\Shop\BrandResource\RelationManagers;
 use App\Models\Shop\Brand;
+use Camya\Filament\Forms\Components\TitleWithSlugInput;
 use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Form;
@@ -35,15 +36,20 @@ class BrandResource extends Resource
                     ->schema([
                         Forms\Components\Grid::make()
                             ->schema([
-                                Forms\Components\TextInput::make('name')
-                                    ->required()
-                                    ->lazy()
-                                    ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
+                                // Forms\Components\TextInput::make('name')
+                                //     ->required()
+                                //     ->lazy()
+                                //     ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
 
-                                Forms\Components\TextInput::make('slug')
-                                    ->disabled()
-                                    ->required()
-                                    ->unique(Brand::class, 'slug', ignoreRecord: true),
+                                // Forms\Components\TextInput::make('slug')
+                                //     ->disabled()
+                                //     ->required()
+                                //     ->unique(Brand::class, 'slug', ignoreRecord: true),
+
+                                TitleWithSlugInput::make(
+                                    fieldTitle: 'name',
+                                    fieldSlug: 'slug',
+                                )->columnSpan('full'),
                             ]),
                         Forms\Components\TextInput::make('website')
                             ->required()

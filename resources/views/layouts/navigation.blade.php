@@ -29,6 +29,12 @@
                             {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end rounded-3 p-2">
+                            <li>
+                                <a class="dropdown-item rounded-2" href="{{ route('profile.index') }}">
+                                    <i class="bi bi-person-circle me-3"></i>
+                                    Profile
+                                </a>
+                            </li>
                             @if(auth()->user()->isAdmin)
                                 <li>
                                     <a class="dropdown-item rounded-2" href="{{ route('filament.pages.dashboard') }}">
