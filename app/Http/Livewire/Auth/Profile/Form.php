@@ -17,6 +17,7 @@ class Form extends Component implements HasForms
     use InteractsWithForms;
 
     public $user;
+    public $notification;
 
     public function getFormSchema() {
         return [
@@ -41,13 +42,12 @@ class Form extends Component implements HasForms
         $this->user->name = $datas['user']['name'];
         $this->user->email = $datas['user']['email'];
         $this->user->password = bcrypt($datas['user']['password']);
-        // $this->user->profile_picture = explode('users/profile_pictures/', $datas['profile_picture'])[1];
         $this->user->save();
 
-        Notification::make()
-            ->title('Saved successfully.')
-            ->success()
-            ->send();
+        $this->notification = [
+            "type" => "success",
+            "message" => "Profile updated successfully"
+        ];
     }
 
     public function render()
