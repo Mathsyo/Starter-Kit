@@ -14,7 +14,9 @@ class CreateSettingsTable extends Migration
             $table->string('group')->index();
             $table->string('name');
             $table->boolean('locked');
-            $table->json('payload');
+            $table->text('payload');
+            $table->boolean('deletable')->default(true);
+            $table->boolean('editable')->default(true);
 
             $table->timestamps();
         });

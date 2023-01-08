@@ -14,5 +14,7 @@ class Setting extends Model
         'name',
         'locked',
         'payload',
+        'deletable',
+        'editable',
     ];
 }

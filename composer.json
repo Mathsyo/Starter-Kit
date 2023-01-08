@@ -14,6 +14,7 @@
         "bezhansalleh/filament-shield": "^2.3",
         "camya/filament-title-with-slug": "^0.5.4",
         "cmdinglasan/filament-boring-avatars": "^1.1",
+        "creagia/filament-code-field": "^1.0",
         "filament/filament": "^2.15",
         "filament/spatie-laravel-media-library-plugin": "^2.15",
         "filament/spatie-laravel-tags-plugin": "^2.15",

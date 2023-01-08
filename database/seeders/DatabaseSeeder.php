@@ -105,5 +105,6 @@ class DatabaseSeeder extends Seeder
         $this->command->info('Blog authors and posts created.');
 
         $this->call(RolesAndPermissionsTableSeeder::class);
+        $this->call(SettingsTableSeeder::class);
     }
 }
